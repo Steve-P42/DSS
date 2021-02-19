@@ -22,7 +22,7 @@ today = datetime.date.today()
 
 # due date input, ask user
 in_date = str(input('Task due (DD.MM.YYYY):\n'))
-# in_date = '27.05.2020'
+# in_date = '01.03.2021'
 
 date_list = in_date.split('.')
 future_date = datetime.date(int(date_list[2]), int(date_list[1]), int(date_list[0]))
