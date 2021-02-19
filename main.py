@@ -6,6 +6,10 @@
 # Status:           in development
 # ----------------------------------------------------------------------------
 # %%
+import datetime
+
+
+
 # --------- TASK NAME ---------
 task_name = input("\nTask name: ")
 # task_name = 'Read Chapter 42'
@@ -16,15 +20,15 @@ task_time = float(input("How many hours(1,1.5,etc.) will the task take: \n"))
 
 # --------- DUE DATE CALCULATION ---------
 
-import datetime
 
+#%%
 today = datetime.date.today()
 
 # due date input, ask user
-in_date = str(input('Task due (DD.MM.YYYY):\n'))
-# in_date = '01.03.2021'
+# due_date = str(input('Task due (DD.MM.YYYY):\n'))
+due_date = '01.03.2021'
 
-date_list = in_date.split('.')
+date_list = due_date.split('.')
 future_date = datetime.date(int(date_list[2]), int(date_list[1]), int(date_list[0]))
 
 now = datetime.datetime.now()
@@ -35,6 +39,12 @@ hms = str(datetime.timedelta(seconds=seconds))
 
 # only for datetime testing
 # print("%d days %s" % (days, hms))
+#%%
+# import datetime
+# print(datetime.date.today())
+# print(datetime.date(2021, 2, 19))
+#%%
+
 
 
 # --------- IMPORTANCE MULTIPLIER ---------
