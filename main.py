@@ -40,8 +40,8 @@ hms = str(datetime.timedelta(seconds=seconds))
 # only for datetime testing
 # print("%d days %s" % (days, hms))
 #%%
-# import datetime
-# print(datetime.date.today())
+import datetime
+print(datetime.date.today())
 # print(datetime.date(2021, 2, 19))
 #%%
 

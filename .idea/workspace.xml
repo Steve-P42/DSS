@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="424098ab-b91a-4f2a-9174-cc30e16121af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/rework.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rework.py" beforeDir="false" afterPath="$PROJECT_DIR$/rework.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +89,9 @@
       <updated>1613645126774</updated>
       <workItem from="1613645149409" duration="877000" />
       <workItem from="1613729100551" duration="1544000" />
-      <workItem from="1613760581152" duration="807000" />
+      <workItem from="1613760581152" duration="896000" />
+      <workItem from="1613825609539" duration="1030000" />
+      <workItem from="1613840587207" duration="1334000" />
     </task>
     <servers />
   </component>
