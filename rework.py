@@ -16,6 +16,7 @@ class TASK:
         self.task_name = ''
         self.task_time = 0.0
         self.due_date = ''
+        self.importance = 0
 
     def get_task_name(self):
         self.task_name = input("\nTask name: ")
@@ -52,12 +53,25 @@ print(task1.task_name, task1.task_time)
 
 
 
-
-
-
 class DSS:
     def __init__(self):
         self.today = datetime.date.today()
+
+
+    def set_importance_multiplier(self, task):
+        importance = int(input('''Importance of decision area, between 1 < 10:
+            o	directly related to study progress: 7-10
+            o	indirectly related to study progress: 5-6
+            o	not related to study progress: 1
+        Importance level: '''))
+
+        if importance >= 7:
+            imp_multiplier = 1
+        elif 7 > importance >= 5:
+            imp_multiplier = 0.7
+        else:
+            imp_multiplier = 0.1
+
 
     def calculate_time_multiplier(self, task):
         if task.self.task_time <= 0.5:
