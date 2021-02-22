@@ -26,11 +26,33 @@ class TASK:
     def get_due_date(self):
         due_date_raw = str(input('Task due (DD.MM.YYYY):\n'))
         x = re.match(r"(\d\d)\.(\d\d)\.(\d\d\d\d)", due_date_raw)
-        y = f'{x.groups()[2]}-{x.groups()[1]}-{x.groups()[0]}'
-        future_date = datetime.date(y)
+        future_date = datetime.date(int(x.groups()[2]), int(x.groups()[1]), int(x.groups()[0]))
+        self.due_date = future_date
 
 
-        self.due_date
+
+
+
+#%% setting up a first task and checking if the methods and attributes work as expected
+task1 = TASK()
+
+task1.get_task_name()
+task1.get_task_time()
+task1.get_due_date()
+
+print(task1.task_name, task1.task_time)
+
+
+
+
+#%%
+
+
+
+
+
+
+
 
 
 class DSS:
@@ -71,10 +93,7 @@ class DSS:
 
 
 # %%
-import re
-due_date_raw = '01.03.2021'
-due_date_sep = re.match(r"(\d\d)\.(\d\d)\.(\d\d\d\d)", due_date_raw)
-print(int(due_date_sep.groups()[1]))
+
 # %%
 
 # %%
