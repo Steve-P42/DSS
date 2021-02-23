@@ -81,6 +81,9 @@
       <module name="DSS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="D:\Data\GitHub\DSS\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -115,7 +118,8 @@
       <workItem from="1613825609539" duration="1030000" />
       <workItem from="1613840587207" duration="1476000" />
       <workItem from="1613938022866" duration="711000" />
-      <workItem from="1614012666413" duration="1478000" />
+      <workItem from="1614012666413" duration="1794000" />
+      <workItem from="1614105520857" duration="1668000" />
     </task>
     <servers />
   </component>
