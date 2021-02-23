@@ -5,16 +5,15 @@
 # Creation date:    2021-02-18 10:46:20
 # Status:           in development
 # ----------------------------------------------------------------------------
-
-
-
-
-
-
-# %%
+# %% IMPORTS
+# datetime for due date calculations
 import datetime
+# regular expressions for the data input reading
 import re
+
 # %%
+
+
 class TASK:
     def __init__(self):
         self.task_name = ''
@@ -70,6 +69,7 @@ class TASK:
 
     def calculate_dg_index(self):
         #todo calculate the index XD
+        pass
 
 
     def get_answer(self):
@@ -100,7 +100,7 @@ task1.set_time_multiplier()
 
 print(task1.task_name, task1.task_time, task1.due_date, task1.imp_multiplier, task1.time_multiplier)
 
-
+task1.get_answer()
 
 
 #%%
