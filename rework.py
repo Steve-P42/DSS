@@ -18,11 +18,12 @@ class TASK:
     def __init__(self):
         self.task_name = ''
         self.task_time = 0.0
-        self.due_date = ''
+        self.due_date = datetime.date(1999, 12, 31)
         self.importance = 0
         self.imp_multiplier = 0.0
         self.time_multiplier = 0.0
         self.dg_index = 0.0
+        self.days_left = 0
 
     def set_task_name(self):
         self.task_name = 'task1'#input("\nTask name: ")
@@ -31,10 +32,15 @@ class TASK:
         self.task_time = 1.5#float(input("How many hours(1,1.5,etc.) will the task take: \n"))
 
     def set_due_date(self):
-        due_date_raw = '01.01.2021'#str(input('Task due (DD.MM.YYYY):\n'))
+        due_date_raw = '28.02.2021'#str(input('Task due (DD.MM.YYYY):\n'))
         x = re.match(r"(\d\d)\.(\d\d)\.(\d\d\d\d)", due_date_raw)
         future_date = datetime.date(int(x.groups()[2]), int(x.groups()[1]), int(x.groups()[0]))
         self.due_date = future_date
+
+    def calculate_days_left(self):
+        today = datetime.date.today()
+        days = (self.due_date - today).days
+        self.days_left = days
 
     def set_importance(self):
         self.importance = 10
@@ -68,7 +74,7 @@ class TASK:
         return self.time_multiplier
 
     def calculate_dg_index(self):
-        #todo calculate the index XD
+        self.dg_index = self.time_multiplier * days_multiplier * self.imp_multiplier
         pass
 
 
@@ -102,6 +108,8 @@ print(task1.task_name, task1.task_time, task1.due_date, task1.imp_multiplier, ta
 
 task1.get_answer()
 
+#%%
+task1.calculate_days_left()
 
 #%%
 
