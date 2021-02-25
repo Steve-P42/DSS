@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="424098ab-b91a-4f2a-9174-cc30e16121af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rework.py" beforeDir="false" afterPath="$PROJECT_DIR$/rework.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,9 +81,6 @@
       <module name="DSS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="D:\Data\GitHub\DSS\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -121,6 +117,8 @@
       <workItem from="1613938022866" duration="711000" />
       <workItem from="1614012666413" duration="1794000" />
       <workItem from="1614105520857" duration="1983000" />
+      <workItem from="1614186657811" duration="1072000" />
+      <workItem from="1614237361031" duration="1447000" />
     </task>
     <servers />
   </component>
