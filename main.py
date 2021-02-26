@@ -3,127 +3,142 @@
 # Author:           Steve-P42
 # Description:      Decision Support System
 # Creation date:    2021-02-18 10:46:20
-# Status:           in development
+# Status:           finished
 # ----------------------------------------------------------------------------
-# %%
+# %% IMPORTS
+# datetime for due date calculations
 import datetime
+# regular expressions for the data input reading
+import re
 
 
+class TASK:
+    def __init__(self, name='t1', time=0.0, due='01.03.2021', importance=10):
+        self.task_name = name
+        self.task_time = time
+        self.time_multiplier = 0.0
+        self.due_date_raw = due
+        x = re.match(r"(\d\d)\.(\d\d)\.(\d\d\d\d)", self.due_date_raw)
+        self.due_date = datetime.date(int(x.groups()[2]), int(x.groups()[1]), int(x.groups()[0]))
+        self.days_left = 0
+        self.days_multiplier = 1
+        self.importance = importance
+        self.imp_multiplier = 0.0
+        self.dg_index = 0.0
 
-# --------- TASK NAME ---------
-task_name = input("\nTask name: ")
-# task_name = 'Read Chapter 42'
+    def set_task_name(self):
+        self.task_name = input("\nTask name: ")
 
-# --------- TASK TIME ---------
-task_time = float(input("How many hours(1,1.5,etc.) will the task take: \n"))
-# task_time = 1.5
+    def set_task_time(self):
+        self.task_time = float(input("How many hours(1,1.5,etc.) will the task take: \n"))
 
-# --------- DUE DATE CALCULATION ---------
+        # setting the task time, automatically sets the time multiplier
+        self.set_time_multiplier()
 
+    def set_time_multiplier(self):
+        if self.task_time <= 0.5:
+            self.time_multiplier = 0.95
+        elif 0.5 < self.task_time <= 1:
+            self.time_multiplier = 0.97
+        elif 1 < self.task_time <= 2:
+            self.time_multiplier = 0.99
+        elif 2 < self.task_time <= 3:
+            self.time_multiplier = 1
+        else:
+            self.time_multiplier = 1
+            print('You should consider splitting the task into subtasks. It takes too long.')
 
-#%%
-today = datetime.date.today()
+    def set_due_date(self):
+        due_date_raw = str(input('Task due (DD.MM.YYYY):\n'))
+        x = re.match(r"(\d\d)\.(\d\d)\.(\d\d\d\d)", due_date_raw)
+        future_date = datetime.date(int(x.groups()[2]), int(x.groups()[1]), int(x.groups()[0]))
+        self.due_date = future_date
 
-# due date input, ask user
-# due_date = str(input('Task due (DD.MM.YYYY):\n'))
-due_date = '01.03.2021'
+        # setting the due date, automatically sets the days left and the days multiplier
+        self.calculate_days_left()
+        self.calculate_days_multiplier()
 
-date_list = due_date.split('.')
-future_date = datetime.date(int(date_list[2]), int(date_list[1]), int(date_list[0]))
+    def calculate_days_left(self):
+        today = datetime.date.today()
+        days = (self.due_date - today).days
+        self.days_left = days
 
-now = datetime.datetime.now()
-mnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
-seconds = (mnight - now).seconds
-days = (future_date - today).days
-hms = str(datetime.timedelta(seconds=seconds))
+    def calculate_days_multiplier(self):
+        if 0 <= self.days_left <= 3:
+            self.days_multiplier = 1
+        elif 3 < self.days_left <= 6:
+            self.days_multiplier = 0.8
+        elif 6 < self.days_left <= 10:
+            self.days_multiplier = 0.7
+        else:
+            self.days_multiplier = 0.5
 
-# only for datetime testing
-# print("%d days %s" % (days, hms))
-#%%
-import datetime
-print(datetime.date.today())
-# print(datetime.date(2021, 2, 19))
-#%%
+    def set_importance(self):
+        self.importance = int(input('''Importance of decision area, between 1 < 10:
+            o	directly related to study progress: 7-10
+            o	indirectly related to study progress: 5-6
+            o	not related to study progress: 1
+        Importance level: '''))
 
+        # setting the importance, automatically sets the importance multiplier
+        self.set_imp_multiplier()
 
+    def set_imp_multiplier(self):
+        if self.importance >= 8:
+            self.imp_multiplier = 1
+        elif 8 > self.importance >= 6:
+            self.imp_multiplier = 0.7
+        elif 6 > self.importance > 4:
+            self.imp_multiplier = 0.4
+        else:
+            self.imp_multiplier = 0.1
 
-# --------- IMPORTANCE MULTIPLIER ---------
+    def calculate_dg_index(self):
+        self.dg_index = self.time_multiplier * self.days_multiplier * self.imp_multiplier
 
-# importance of decision area
-importance = int(input('''Importance of decision area, between 1 < 10:
-    o	directly related to study progress: 7-10
-    o	indirectly related to study progress: 5-6
-    o	not related to study progress: 1
-Importance level: '''))
+    def get_answer(self):
+        print(f'\nThe task "{self.task_name}" will take {self.task_time} hour(s).',
+              f'It has importance level {self.importance} and is due on {self.due_date_raw},',
+              f'which is in {self.days_left} day(s).')
 
-if importance >= 7:
-    imp_multiplier = 1
-elif 7 > importance >= 5:
-    imp_multiplier = 0.7
-else:
-    imp_multiplier = 0.1
+        print(f'DG Index: {round(self.dg_index, 2)}')
 
-# print("Importance Multiplier: ", imp_multiplier)
+        if self.dg_index > 0.7:
+            print(f'The answer to the question: "Should you start this task ASAP?", is: ',
+                  f'YES, with {round(self.dg_index * 100, 2)}% relevance.')
 
+        if 0.5 <= self.dg_index <= 0.7:
+            print(f'The answer to the question: "Should you start this task ASAP?",',
+                  f'is: There\'s probably something more important to do,',
+                  f'with {round(self.dg_index * 100, 2)}% relevance.')
 
-# --------- TIME MULTIPLIER ---------
+        if self.dg_index < 0.5:
+            print(f'The answer to the question: "Should you start this task ASAP?",',
+                  f'is: HECK NO, why are you even asking me?, with {round(self.dg_index * 100, 2)}% relevance.')
 
-if task_time <= 0.5:
-    t_multiplier = 0.95
-elif 0.5 < task_time <= 1:
-    t_multiplier = 0.97
-elif 1 < task_time <= 2:
-    t_multiplier = 0.99
-elif 2 < task_time <= 3:
-    t_multiplier = 1
-else:
-    t_multiplier = 1
-    print('You should consider splitting the task into subtasks. It takes too long.')
-
-# print("Task Time Multiplier: ", t_multiplier)
-
-
-# --------- DUE DATE MULTIPLIER ---------
-
-if 0 <= int(days) <= 10:
-    if int(days) == 0:
-        days_multiplier = 1
-    days_multiplier = 1 - (int(days) / 10) ** 2
-# elif int(days) > 10 and int(days) <= 25:
-#     days_multiplier = 0.2
-# else:
-#     if imp_multiplier < 0.6:
-#         days_multiplier = 0.1
-#     else:
-#         days_multiplier = 0.8
-
-# print("Due Day Multiplier: ", days_multiplier)
-
-
-dg_index = t_multiplier * days_multiplier * imp_multiplier
-
-# print("DG Index:", round(dg_index,2),'\n')
-
-
-print(f'\nThe task "{task_name}" will take {task_time} hour(s), has importance level {importance} and is due in \
-{days} day(s).')
-print(f'DG Index: {round(dg_index, 2)}')
-if dg_index > 0.7:
-    print(f'The answer to the question: "Should you start this task ASAP?", is: YES, with \
-{round(dg_index * 100, 2)}% relevance.')
-
-if 0.5 <= dg_index <= 0.7:
-    print(f'The answer to the question: "Should you start this task ASAP?", is: There\'s probably something more \
-important to do, with {round(dg_index * 100, 2)}% relevance.')
-
-if dg_index < 0.5:
-    print(f'The answer to the question: "Should you start this task ASAP?", is: HECK NO, why are you even asking me?, \
-with {round(dg_index * 100, 2)}% relevance.')
+        if int(self.dg_index * 100) == 69:
+            print('(Nice, btw.)')
 
 # %%
 
-# for i in range(0,10,1):
-#   print (1-(int(i)/10)**2)
+
+class DSS:
+    def __init__(self, name, time, due_date, importance):
+        self.task = TASK(name, time, due_date, importance)
+
+        self.task.set_time_multiplier()
+        self.task.calculate_days_left()
+        self.task.calculate_days_multiplier()
+        self.task.set_imp_multiplier()
+
+        self.task.calculate_dg_index()
+        self.task.get_answer()
 
 
-# %%
+#%% The DSS can now simply be executed by calling DSS with
+#   'Task Name' string, Task Duration integer/float, Due Date DD.MM.YYYY string, and Importance 0-10 integer
+
+DSS('Programming Practice', 2.0, '01.03.2021', 10)
+DSS('Learn vocabulary', 1.2, '08.03.2021', 8)
+DSS('Clean Windows', 1.5, '02.03.2021', 2)
+
