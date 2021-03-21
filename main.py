@@ -64,19 +64,19 @@ class TASK:
         self.days_left = days
 
     def calculate_days_multiplier(self):
-        if 0 <= self.days_left <= 3:
+        if 0 <= self.days_left <= 5:
             self.days_multiplier = 1
-        elif 3 < self.days_left <= 6:
-            self.days_multiplier = 0.8
-        elif 6 < self.days_left <= 10:
-            self.days_multiplier = 0.7
+        # elif 3 < self.days_left <= 6:
+        #     self.days_multiplier = 0.8
+        # elif 6 < self.days_left <= 10:
+        #     self.days_multiplier = 0.7
         else:
-            self.days_multiplier = 0.5
+            self.days_multiplier = 0.8
 
     def set_importance(self):
         self.importance = int(input('''Importance of decision area, between 1 < 10:
-            o	directly related to study progress: 7-10
-            o	indirectly related to study progress: 5-6
+            o	directly related to study progress: 8-10
+            o	indirectly related to study progress: 5-7
             o	not related to study progress: 1
         Importance level: '''))
 
@@ -84,12 +84,12 @@ class TASK:
         self.set_imp_multiplier()
 
     def set_imp_multiplier(self):
-        if self.importance >= 8:
+        if self.importance >= 9:
             self.imp_multiplier = 1
+        elif 9 > self.importance >= 8:
+            self.imp_multiplier = 0.8
         elif 8 > self.importance >= 6:
-            self.imp_multiplier = 0.7
-        elif 6 > self.importance > 4:
-            self.imp_multiplier = 0.4
+            self.imp_multiplier = 0.3
         else:
             self.imp_multiplier = 0.1
 
@@ -138,7 +138,10 @@ class DSS:
 #%% The DSS can now simply be executed by calling DSS with
 #   'Task Name' string, Task Duration integer/float, Due Date DD.MM.YYYY string, and Importance 0-10 integer
 
-DSS('Programming Practice', 2.0, '01.03.2021', 10)
-DSS('Learn vocabulary', 1.2, '08.03.2021', 8)
-DSS('Clean Windows', 1.5, '02.03.2021', 2)
+DSS('Programming Practice', 2.0, '28.03.2021', 10)
+DSS('Learn vocabulary', 1.2, '28.03.2021', 8)
+DSS('Clean Windows', 1.5, '28.03.2021', 2)
+
+DSS('Do stats HW', 3, '21.03.2021', 10)
+
 
