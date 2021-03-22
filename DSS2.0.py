@@ -12,6 +12,12 @@
 # #todo create input based on importance and urgency
 # #todo label the dot
 
+# coordinates = input('Importance 1-10 and Urgency 1-10:')
+coordinates = '8 6'
+x = int(coordinates.split()[0]) * 100
+y = 500 - int(coordinates.split()[1]) * 50
+
+
 import tkinter as tk
 
 root = tk.Tk()
@@ -29,8 +35,7 @@ w.create_line(0, 250, 1000, 250, fill="red", dash=(4, 4))
 # Draw a red vertical line (dashed line)
 w.create_line(500, 0, 500, 500, fill="red", dash=(4, 4))
 
-#todo draw shape from two coordinates
-x1, y1, x2, y2 = 10, 10, 10, 10
+x1, y1, x2, y2 = x, y, x+3, y+3
 
 w.create_oval(x1, y1, x2, y2, fill="green", outline="red", width=10)
 
