@@ -30,7 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/DSS2.0.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../OneDrive - IMC/4. Term/Distributed Systems/GitRepo/DS_Examples-master" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -131,7 +131,9 @@
       <workItem from="1614524264096" duration="1375000" />
       <workItem from="1616311909688" duration="249000" />
       <workItem from="1616312178010" duration="5342000" />
-      <workItem from="1616399395054" duration="345000" />
+      <workItem from="1616399395054" duration="1366000" />
+      <workItem from="1616588828933" duration="1820000" />
+      <workItem from="1616694617917" duration="632000" />
     </task>
     <servers />
   </component>

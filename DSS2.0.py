@@ -8,38 +8,40 @@
 # %%
 # %%
 # %%
-# #todo put into class
-# #todo create input based on importance and urgency
-# #todo label the dot
-
-# coordinates = input('Importance 1-10 and Urgency 1-10:')
-coordinates = '8 6'
-x = int(coordinates.split()[0]) * 100
-y = 500 - int(coordinates.split()[1]) * 50
-
-
 import tkinter as tk
 
-root = tk.Tk()
-root.title('Decision Matrix')
-root.geometry('1020x520+900+400')
-root.resizable(False, False)
 
-w = tk.Canvas(root, width=1000, height=500)
-w.pack()
+def main():
+    # these represent importance and urgency
+    coordinates = '5 6'
+    # coordinates = input('Importance 1-10 and Urgency 1-10:')
+    x = int(coordinates.split()[0]) * 100
+    y = 500 - int(coordinates.split()[1]) * 50
 
-# Draw a blue rectangle in the middle
-w.create_rectangle(1000, 500, 10, 10, fill="blue")
-# Draw a yellow line across
-w.create_line(0, 250, 1000, 250, fill="red", dash=(4, 4))
-# Draw a red vertical line (dashed line)
-w.create_line(500, 0, 500, 500, fill="red", dash=(4, 4))
+    root = tk.Tk()
+    root.title('Decision Matrix')
+    root.geometry('1020x520+900+400')
+    root.resizable(False, False)
 
-x1, y1, x2, y2 = x, y, x+3, y+3
+    blue = tk.Canvas(root, width=1000, height=500)
+    blue.pack()
 
-w.create_oval(x1, y1, x2, y2, fill="green", outline="red", width=10)
+    # Draw a blue rectangle in the middle
+    blue.create_rectangle(1000, 500, 10, 10, fill="blue")
+    # Draw a yellow line across
+    blue.create_line(0, 250, 1000, 250, fill="red", dash=(4, 4))
+    # Draw a red vertical line (dashed line)
+    blue.create_line(500, 0, 500, 500, fill="red", dash=(4, 4))
 
-root.mainloop()
+    x1, y1, x2, y2 = x, y, x+3, y+3
+
+    blue.create_oval(x1, y1, x2, y2, fill="green", outline="red", width=10)
+    blue.create_text(x+25, y+1, text=f"({coordinates[0]},{coordinates[2]})", fill="#F00")
+
+    root.mainloop()
+
+
+main()
 # %%
 # https://www.geeksforgeeks.org/python-tkinter-create-different-type-of-lines-using-canvas-class/
 
