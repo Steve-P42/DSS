@@ -23,7 +23,7 @@ class Matrix:
 
         root = tk.Tk()
         root.title('Decision Matrix')
-        root.geometry('1020x520+900+400')
+        root.geometry('1020x720+900+400')
         root.resizable(False, False)
 
         blue = tk.Canvas(root, width=1000, height=500)
@@ -36,6 +36,37 @@ class Matrix:
         # Draw a red vertical line (dashed line)
         blue.create_line(500, 0, 500, 500, fill="red", dash=(4, 4))
 
+        # frame that contains text entry functionality
+        frame1 = tk.Frame(root, bg='green', bd=5)
+        frame1.pack()
+
+        # label to display what to input into the task_entry field
+        t_var = "Taskname, Importance, Urgency"
+        label = tk.Label(frame1, text=t_var, bg="black", fg="green")
+        label.pack()
+
+        task_entry = tk.Entry(frame1, width=20, bg="blue", fg="green")
+        task_entry.insert(0, 'Task, 6, 9')
+        task_entry.pack(padx=5, pady=5)
+
+        entry_button = tk.Button(frame1, text="Put into Matrix..", command=self.new_function)
+        entry_button.pack()
+
+
+
+
+        # def set():
+        #     print('helllllo')
+        #     #var.set("Good-Bye Cruel World")
+        #
+        # var = tk.StringVar()
+        # var.set("Hello World")
+        #
+        # label = tk.Label(root, textvariable=var)
+        # label.pack()
+        # button = tk.Button(root, text="set", command=set)
+        # button.pack()
+
         for item in self.task_list:
             x = item[1] * 100
             y = 500 - item[2] * 50
@@ -47,10 +78,14 @@ class Matrix:
 
         root.mainloop()
 
+    def new_function(self):
+        print('hello')
 
-#l1 = [['Coding', 8, 7], ['Cleaning', 4, 6]]
 
-m1 = Matrix()
+
+l1 = [['Coding', 8, 7], ['Cleaning', 4, 6]]
+
+m1 = Matrix(l1)
 
 
 
