@@ -49,41 +49,37 @@ class Matrix:
         task_entry.insert(0, 'Task, 6, 9')
         task_entry.pack(padx=5, pady=5)
 
-        entry_button = tk.Button(frame1, text="Put into Matrix..", command=self.new_function)
+        def new_function():
+            task = task_entry.get().split(',')
+
+            new_task = [task[0], int(task[1].strip()), int(task[2].strip())]
+
+            print(new_task)
+            print(type(new_task))
+            put_task_on_matrix(new_task)
+            put_task_on_matrix(['New', 2, 7])
+
+
+        entry_button = tk.Button(frame1, text="Put into Matrix..", command=new_function)
         entry_button.pack()
 
-
-
-
-        # def set():
-        #     print('helllllo')
-        #     #var.set("Good-Bye Cruel World")
-        #
-        # var = tk.StringVar()
-        # var.set("Hello World")
-        #
-        # label = tk.Label(root, textvariable=var)
-        # label.pack()
-        # button = tk.Button(root, text="set", command=set)
-        # button.pack()
-
-        for item in self.task_list:
-            x = item[1] * 100
-            y = 500 - item[2] * 50
+        def put_task_on_matrix(tsk):
+            x = tsk[1] * 100
+            y = 500 - tsk[2] * 50
 
             x1, y1, x2, y2 = x, y, x + 3, y + 3
 
             blue.create_oval(x1, y1, x2, y2, fill="green", outline="red", width=10)
-            blue.create_text(x + 50, y + 1, text=f"{item[0]}: ({item[1]},{item[2]})", fill="#F00")
+            blue.create_text(x + 50, y + 1, text=f"{tsk[0]}: ({tsk[1]},{tsk[2]})", fill="#F00")
+
+        for item in self.task_list:
+            print(item)
+            put_task_on_matrix(item)
 
         root.mainloop()
 
-    def new_function(self):
-        print('hello')
 
-
-
-l1 = [['Coding', 8, 7], ['Cleaning', 4, 6]]
+l1 = [['Coding', 8, 7], ['Cleaning', 4, 6], ['OneOne', 1, 1]]
 
 m1 = Matrix(l1)
 
