@@ -70,7 +70,7 @@ class Matrix:
             x1, y1, x2, y2 = x, y, x + 3, y + 3
 
             blue.create_oval(x1, y1, x2, y2, fill="green", outline="red", width=10)
-            blue.create_text(x + 50, y + 1, text=f"{tsk[0]}: ({tsk[1]},{tsk[2]})", fill="#F00")
+            blue.create_text(x, y + 18, text=f"{tsk[0]}: ({tsk[1]},{tsk[2]})", fill="#40ff00")
 
         for item in self.task_list:
             print(item)
