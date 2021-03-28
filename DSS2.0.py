@@ -9,6 +9,7 @@
 # %%
 # %%
 import tkinter as tk
+import re
 
 
 class Matrix:
@@ -57,8 +58,6 @@ class Matrix:
             print(new_task)
             print(type(new_task))
             put_task_on_matrix(new_task)
-            put_task_on_matrix(['New', 2, 7])
-
 
         entry_button = tk.Button(frame1, text="Put into Matrix..", command=new_function)
         entry_button.pack()
@@ -85,12 +84,11 @@ m1 = Matrix(l1)
 
 
 
-# coordinates = input('Importance 1-10 and Urgency 1-10:')
-
 # %%
 # https://www.geeksforgeeks.org/python-tkinter-create-different-type-of-lines-using-canvas-class/
 
 # %%
+
 
 # %%
 
