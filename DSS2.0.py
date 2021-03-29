@@ -9,7 +9,7 @@
 # %%
 # %%
 import tkinter as tk
-import re
+import csv
 
 
 class Matrix:
@@ -18,8 +18,13 @@ class Matrix:
         if tasklist is None:
             # these represent taskname, importance and urgency
             tasklist = []
-            for i in range(1, 10):
-                tasklist.append([f'Test{i}', i, i])
+            # for i in range(1, 10):
+            #     tasklist.append([f'Test{i}', i, i])
+            with open('tasks.csv') as task_file:
+                t_list = csv.reader(task_file)
+                for row in t_list:
+                    print(f'{row[0]}, {int(row[1])}, {int(row[2])}')
+                    tasklist.append([f'{row[0]}', int(row[1]), int(row[2])])
         self.task_list = tasklist
 
         root = tk.Tk()
@@ -78,9 +83,9 @@ class Matrix:
         root.mainloop()
 
 
-l1 = [['Coding', 8, 7], ['Cleaning', 4, 6], ['OneOne', 1, 1]]
+#l1 = [['Coding', 8, 7], ['Cleaning', 4, 6], ['OneOne', 1, 1]]
 
-m1 = Matrix(l1)
+m1 = Matrix()
 
 
 

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="424098ab-b91a-4f2a-9174-cc30e16121af" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tasks.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DSS2.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/DSS2.0.py" afterDir="false" />
     </list>
@@ -137,7 +138,8 @@
       <workItem from="1616765137459" duration="1497000" />
       <workItem from="1616854801403" duration="20000" />
       <workItem from="1616854851068" duration="5337000" />
-      <workItem from="1616923478489" duration="4783000" />
+      <workItem from="1616923478489" duration="5256000" />
+      <workItem from="1617017851265" duration="1481000" />
     </task>
     <servers />
   </component>
