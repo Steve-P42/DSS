@@ -60,9 +60,11 @@ class Matrix:
 
             new_task = [task[0], int(task[1].strip()), int(task[2].strip())]
 
-            print(new_task)
-            print(type(new_task))
+            #todo figure out why this is not working properly
+            self.task_list.append(new_task)
             put_task_on_matrix(new_task)
+
+
 
         entry_button = tk.Button(frame1, text="Put into Matrix..", command=new_function)
         entry_button.pack()
@@ -79,6 +81,16 @@ class Matrix:
         for item in self.task_list:
             print(item)
             put_task_on_matrix(item)
+
+        #todo figure out bugs
+        def save_new_tasks_in_csv():
+            with open('tasks.csv', mode='w') as task_file2:
+                w = csv.writer(task_file2)
+                w.writerows(self.task_list)
+
+        print(self.task_list)
+        save_new_tasks_in_csv()
+
 
         root.mainloop()
 
