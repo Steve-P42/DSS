@@ -23,8 +23,11 @@ class Matrix:
             with open('tasks.csv') as task_file:
                 t_list = csv.reader(task_file)
                 for row in t_list:
-                    print(f'{row[0]}, {int(row[1])}, {int(row[2])}')
-                    tasklist.append([f'{row[0]}', int(row[1]), int(row[2])])
+                    try:
+                        print(f'{row[0]}, {int(row[1])}, {int(row[2])}')
+                        tasklist.append([f'{row[0]}', int(row[1]), int(row[2])])
+                    except IndexError:
+                        pass
         self.task_list = tasklist
 
         root = tk.Tk()
@@ -82,7 +85,6 @@ class Matrix:
             print(item)
             put_task_on_matrix(item)
 
-        #todo figure out bugs
         def save_new_tasks_in_csv():
             with open('tasks.csv', mode='w') as task_file2:
                 w = csv.writer(task_file2)
@@ -103,9 +105,6 @@ m1 = Matrix()
 
 # %%
 # https://www.geeksforgeeks.org/python-tkinter-create-different-type-of-lines-using-canvas-class/
-
-# %%
-
 
 # %%
 
