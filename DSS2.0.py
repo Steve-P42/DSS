@@ -15,11 +15,9 @@ import csv
 class Matrix:
 
     def __init__(self, tasklist=None):
+        # if no arguments are given, the tasks are retrieved from the tasks.csv file
         if tasklist is None:
-            # these represent taskname, importance and urgency
             tasklist = []
-            # for i in range(1, 10):
-            #     tasklist.append([f'Test{i}', i, i])
             with open('tasks.csv') as task_file:
                 t_list = csv.reader(task_file)
                 for row in t_list:
@@ -30,10 +28,11 @@ class Matrix:
                         pass
         self.task_list = tasklist
 
+        # main window configuration
         root = tk.Tk()
         root.title('Decision Matrix')
         root.geometry('1020x720+900+400')
-        root.configure(bg='black')
+        root.configure(bg='black')         #todo use image as bg?
         root.resizable(False, False)
 
         blue = tk.Canvas(root, width=1000, height=500)
@@ -59,11 +58,13 @@ class Matrix:
         label = tk.Label(frame1, text=t_var, bg="black", fg="green")
         label.pack()
 
+        # text entry field for new tasks
         task_entry = tk.Entry(frame1, width=20, bg="blue", fg="green")
         task_entry.insert(0, 'Task, 6, 9')
         task_entry.pack(padx=5, pady=5)
 
-        def new_function():
+        # function to get the tasks from the text entry field
+        def new_task_function():
             task = task_entry.get().split(',')
 
             new_task = [task[0], int(task[1].strip()), int(task[2].strip())]
@@ -71,9 +72,11 @@ class Matrix:
             self.task_list.append(new_task)
             put_task_on_matrix(new_task)
 
-        entry_button = tk.Button(frame1, text="Put into Matrix..", command=new_function)
+        # entry confirmation button
+        entry_button = tk.Button(frame1, text="Put into Matrix..", command=new_task_function)
         entry_button.pack()
 
+        # function to draw tasks on matrix
         def put_task_on_matrix(tsk):
             x = tsk[1] * 100
             y = 500 - tsk[2] * 50
@@ -87,6 +90,7 @@ class Matrix:
             print(item)
             put_task_on_matrix(item)
 
+        # function to ..
         def save_new_tasks_in_csv():
             with open('tasks.csv', mode='w') as task_file2:
                 w = csv.writer(task_file2)
@@ -98,6 +102,7 @@ class Matrix:
 
         #todo add delete button and function to delete by task name
 
+        # run tk window in a loop
         root.mainloop()
 
 
