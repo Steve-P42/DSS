@@ -33,6 +33,7 @@ class Matrix:
         root = tk.Tk()
         root.title('Decision Matrix')
         root.geometry('1020x720+900+400')
+        root.configure(bg='black')
         root.resizable(False, False)
 
         blue = tk.Canvas(root, width=1000, height=500)
@@ -49,6 +50,10 @@ class Matrix:
         frame1 = tk.Frame(root, bg='green', bd=5)
         frame1.pack()
 
+        # frame that contains save button
+        frame2 = tk.Frame(root, bg='red', bd=5)
+        frame2.pack()
+
         # label to display what to input into the task_entry field
         t_var = "Taskname, Importance, Urgency"
         label = tk.Label(frame1, text=t_var, bg="black", fg="green")
@@ -63,11 +68,8 @@ class Matrix:
 
             new_task = [task[0], int(task[1].strip()), int(task[2].strip())]
 
-            #todo figure out why this is not working properly
             self.task_list.append(new_task)
             put_task_on_matrix(new_task)
-
-
 
         entry_button = tk.Button(frame1, text="Put into Matrix..", command=new_function)
         entry_button.pack()
@@ -90,9 +92,11 @@ class Matrix:
                 w = csv.writer(task_file2)
                 w.writerows(self.task_list)
 
-        print(self.task_list)
-        save_new_tasks_in_csv()
+        # button to save all tasks on the matrix into the tasks.csv file
+        save_button = tk.Button(frame2, text="Save New Tasks", command=save_new_tasks_in_csv)
+        save_button.pack()
 
+        #todo add delete button and function to delete by task name
 
         root.mainloop()
 
