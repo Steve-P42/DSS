@@ -54,7 +54,7 @@ class Matrix:
         frame_empty.pack()
 
         # frame that contains save button
-        frame2 = tk.Frame(root, bg='red', bd=5)
+        frame2 = tk.Frame(root, bg='green', bd=5)
         frame2.pack()
 
         # label to display what to input into the task_entry field
@@ -91,7 +91,6 @@ class Matrix:
             blue.create_text(x, y + 18, text=f"{tsk[0]}: ({tsk[1]},{tsk[2]})", fill="#40ff00")
 
         for item in self.task_list:
-            #print(item)
             put_task_on_matrix(item)
 
         # function to ..
@@ -101,7 +100,7 @@ class Matrix:
                 w.writerows(self.task_list)
 
         # button to save all tasks on the matrix into the tasks.csv file
-        save_button = tk.Button(frame2, text="Save New Tasks", command=save_new_tasks_in_csv)
+        save_button = tk.Button(frame2, text="Save Tasks to file.", command=save_new_tasks_in_csv)
         save_button.pack()
 
         # function to ..
@@ -127,7 +126,7 @@ class Matrix:
                 pass
 
         # button to save all tasks on the matrix into the tasks.csv file
-        del_button = tk.Button(frame1, text="Delete Task by name.", command=delete_task_by_name)
+        del_button = tk.Button(frame1, text="Delete Task by name.", command=delete_task_by_name, fg="red", bg="grey")
         del_button.pack(padx=5, pady=5)
 
         # run tk window in a loop

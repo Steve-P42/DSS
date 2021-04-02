@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="424098ab-b91a-4f2a-9174-cc30e16121af" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DSS2.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/DSS2.0.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tasks.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +142,7 @@
       <workItem from="1617162226169" duration="454000" />
       <workItem from="1617162695775" duration="216000" />
       <workItem from="1617246701375" duration="1217000" />
-      <workItem from="1617332043211" duration="1305000" />
+      <workItem from="1617332043211" duration="1622000" />
     </task>
     <servers />
   </component>
