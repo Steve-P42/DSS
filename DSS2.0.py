@@ -49,6 +49,10 @@ class Matrix:
         frame1 = tk.Frame(root, bg='green', bd=5)
         frame1.pack()
 
+        # frame as spacing
+        frame_empty = tk.Frame(root, bg='black', bd=5, height=20)
+        frame_empty.pack()
+
         # frame that contains save button
         frame2 = tk.Frame(root, bg='red', bd=5)
         frame2.pack()
@@ -74,7 +78,7 @@ class Matrix:
 
         # entry confirmation button
         entry_button = tk.Button(frame1, text="Put into Matrix..", command=new_task_function)
-        entry_button.pack()
+        entry_button.pack(padx=5, pady=5)
 
         # function to draw tasks on matrix
         def put_task_on_matrix(tsk):
@@ -87,7 +91,7 @@ class Matrix:
             blue.create_text(x, y + 18, text=f"{tsk[0]}: ({tsk[1]},{tsk[2]})", fill="#40ff00")
 
         for item in self.task_list:
-            print(item)
+            #print(item)
             put_task_on_matrix(item)
 
         # function to ..
@@ -100,7 +104,31 @@ class Matrix:
         save_button = tk.Button(frame2, text="Save New Tasks", command=save_new_tasks_in_csv)
         save_button.pack()
 
-        #todo add delete button and function to delete by task name
+        # function to ..
+        def delete_task_by_name():
+            t = task_entry.get().strip()
+            try:
+                for i in range(len(self.task_list)):
+                    if self.task_list[i][0] == t or self.task_list[i][0].lower() == t:
+                        print(self.task_list[i])
+                        del(self.task_list[i])
+                        # delete canvas entries
+                        blue.delete("all")
+                        # Draw a blue rectangle in the middle
+                        blue.create_rectangle(1000, 500, 10, 10, fill="blue")
+                        # Draw a yellow line across
+                        blue.create_line(0, 250, 1000, 250, fill="red", dash=(4, 4))
+                        # Draw a red vertical line (dashed line)
+                        blue.create_line(500, 0, 500, 500, fill="red", dash=(4, 4))
+                        for task in self.task_list:
+                            put_task_on_matrix(task)
+                        break
+            except IndexError:
+                pass
+
+        # button to save all tasks on the matrix into the tasks.csv file
+        del_button = tk.Button(frame1, text="Delete Task by name.", command=delete_task_by_name)
+        del_button.pack(padx=5, pady=5)
 
         # run tk window in a loop
         root.mainloop()
