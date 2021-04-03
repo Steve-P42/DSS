@@ -32,8 +32,16 @@ class Matrix:
         root = tk.Tk()
         root.title('Decision Matrix')
         root.geometry('1020x720+900+400')
-        root.configure(bg='black')         #todo use image as bg?
+        root.configure(bg='black')         # redundant, since image is used as bg
         root.resizable(False, False)
+
+        # image credit goes to Nasa and the Hubble Space Telescope (https://svs.gsfc.nasa.gov/30946)
+        # Add image file
+        bg = tk.PhotoImage(file="UDF.png")
+
+        # Show image using label
+        label1 = tk.Label(root, image=bg)
+        label1.place(x=0, y=0)
 
         blue = tk.Canvas(root, width=1000, height=500)
         blue.pack()
@@ -41,9 +49,9 @@ class Matrix:
         # Draw a blue rectangle in the middle
         blue.create_rectangle(1000, 500, 10, 10, fill="blue")
         # Draw a yellow line across
-        blue.create_line(0, 250, 1000, 250, fill="red", dash=(4, 4))
+        blue.create_line(0, 250, 1000, 250, fill="white", dash=(4, 4))
         # Draw a red vertical line (dashed line)
-        blue.create_line(500, 0, 500, 500, fill="red", dash=(4, 4))
+        blue.create_line(500, 0, 500, 500, fill="white", dash=(4, 4))
 
         # frame that contains text entry functionality
         frame1 = tk.Frame(root, bg='green', bd=5)
@@ -87,7 +95,7 @@ class Matrix:
 
             x1, y1, x2, y2 = x, y, x + 3, y + 3
 
-            blue.create_oval(x1, y1, x2, y2, fill="green", outline="red", width=10)
+            blue.create_oval(x1, y1, x2, y2, fill="red", outline="red", width=10)
             blue.create_text(x, y + 18, text=f"{tsk[0]}: ({tsk[1]},{tsk[2]})", fill="#40ff00")
 
         for item in self.task_list:
@@ -128,6 +136,8 @@ class Matrix:
         # button to save all tasks on the matrix into the tasks.csv file
         del_button = tk.Button(frame1, text="Delete Task by name.", command=delete_task_by_name, fg="red", bg="grey")
         del_button.pack(padx=5, pady=5)
+
+        print(blue.find_all())
 
         # run tk window in a loop
         root.mainloop()

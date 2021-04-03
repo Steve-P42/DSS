@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="424098ab-b91a-4f2a-9174-cc30e16121af" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DSS2.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/DSS2.0.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +34,9 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Data\GitHub\DSS" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Data\GitHub\DSS" />
     </key>
@@ -142,7 +146,8 @@
       <workItem from="1617162226169" duration="454000" />
       <workItem from="1617162695775" duration="216000" />
       <workItem from="1617246701375" duration="1217000" />
-      <workItem from="1617332043211" duration="1622000" />
+      <workItem from="1617332043211" duration="1837000" />
+      <workItem from="1617476541218" duration="1111000" />
     </task>
     <servers />
   </component>
