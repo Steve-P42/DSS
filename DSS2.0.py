@@ -6,7 +6,7 @@
 # Status:           in development
 # ----------------------------------------------------------------------------
 # %%
-# %%
+# %% useful link: http://www.science.smith.edu/dftwiki/index.php/File:TkInterColorCharts.png
 # %%
 import tkinter as tk
 import csv
@@ -22,7 +22,7 @@ class Matrix:
                 t_list = csv.reader(task_file)
                 for row in t_list:
                     try:
-                        print(f'{row[0]}, {int(row[1])}, {int(row[2])}')
+                        #print(f'{row[0]}, {int(row[1])}, {int(row[2])}')
                         tasklist.append([f'{row[0]}', int(row[1]), int(row[2])])
                     except IndexError:
                         pass
@@ -31,7 +31,7 @@ class Matrix:
         # main window configuration
         root = tk.Tk()
         root.title('Decision Matrix')
-        root.geometry('1020x720+900+400')
+        root.geometry('1030x720+900+400')
         root.configure(bg='black')         # redundant, since image is used as bg
         root.resizable(False, False)
 
@@ -43,37 +43,34 @@ class Matrix:
         label1 = tk.Label(root, image=bg)
         label1.place(x=0, y=0)
 
+        # creating the canvas for the matrix
         blue = tk.Canvas(root, width=1000, height=500)
-        blue.pack()
+        blue.pack(padx=5, pady=10)
 
-        # Draw a blue rectangle in the middle
-        blue.create_rectangle(1000, 500, 10, 10, fill="blue")
-        # Draw a yellow line across
+        # drawing a blue rectangle in the middle
+        blue.create_rectangle(1000, 500, 5, 5, fill="blue")
+        # drawing a white line across (dashed line)
         blue.create_line(0, 250, 1000, 250, fill="white", dash=(4, 4))
-        # Draw a red vertical line (dashed line)
+        # drawing a white vertical line (dashed line)
         blue.create_line(500, 0, 500, 500, fill="white", dash=(4, 4))
 
         # frame that contains text entry functionality
-        frame1 = tk.Frame(root, bg='green', bd=5)
+        frame1 = tk.Frame(root, bg='blue4', bd=5)
         frame1.pack()
-
-        # frame as spacing
-        frame_empty = tk.Frame(root, bg='black', bd=5, height=20)
-        frame_empty.pack()
 
         # frame that contains save button
         frame2 = tk.Frame(root, bg='green', bd=5)
-        frame2.pack()
+        frame2.pack(pady=10)
 
         # label to display what to input into the task_entry field
         t_var = "Taskname, Importance, Urgency"
-        label = tk.Label(frame1, text=t_var, bg="black", fg="green")
+        label = tk.Label(frame1, text=t_var, bg="dark slate grey", fg="cyan2")
         label.pack()
 
         # text entry field for new tasks
-        task_entry = tk.Entry(frame1, width=20, bg="blue", fg="green")
-        task_entry.insert(0, 'Task, 6, 9')
-        task_entry.pack(padx=5, pady=5)
+        task_entry = tk.Entry(frame1, width=20, bg="dark slate blue", fg="green")
+        task_entry.insert(0, 'NiceTask, 6, 9')
+        task_entry.pack(padx=7, pady=7)
 
         # function to get the tasks from the text entry field
         def new_task_function():
@@ -85,7 +82,7 @@ class Matrix:
             put_task_on_matrix(new_task)
 
         # entry confirmation button
-        entry_button = tk.Button(frame1, text="Put into Matrix..", command=new_task_function)
+        entry_button = tk.Button(frame1, text="Put into Matrix..", command=new_task_function, bg="light slate grey")
         entry_button.pack(padx=5, pady=5)
 
         # function to draw tasks on matrix
@@ -108,7 +105,7 @@ class Matrix:
                 w.writerows(self.task_list)
 
         # button to save all tasks on the matrix into the tasks.csv file
-        save_button = tk.Button(frame2, text="Save Tasks to file.", command=save_new_tasks_in_csv)
+        save_button = tk.Button(frame2, text="Save Tasks to file.", command=save_new_tasks_in_csv, bg="light slate grey")
         save_button.pack()
 
         # function to ..
@@ -117,7 +114,6 @@ class Matrix:
             try:
                 for i in range(len(self.task_list)):
                     if self.task_list[i][0] == t or self.task_list[i][0].lower() == t:
-                        print(self.task_list[i])
                         del(self.task_list[i])
                         # delete canvas entries
                         blue.delete("all")
@@ -134,10 +130,9 @@ class Matrix:
                 pass
 
         # button to save all tasks on the matrix into the tasks.csv file
-        del_button = tk.Button(frame1, text="Delete Task by name.", command=delete_task_by_name, fg="red", bg="grey")
+        del_button = tk.Button(frame1, text="Delete Task by name.", command=delete_task_by_name, fg="orange red",
+                               bg="dim grey")
         del_button.pack(padx=5, pady=5)
-
-        print(blue.find_all())
 
         # run tk window in a loop
         root.mainloop()
