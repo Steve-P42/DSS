@@ -74,12 +74,16 @@ class Matrix:
 
         # function to get the tasks from the text entry field
         def new_task_function():
-            task = task_entry.get().split(',')
-
-            new_task = [task[0], int(task[1].strip()), int(task[2].strip())]
-
-            self.task_list.append(new_task)
-            put_task_on_matrix(new_task)
+            try:
+                task = task_entry.get().split(',')
+                try:
+                    new_task = [task[0], int(task[1].strip()), int(task[2].strip())]
+                    self.task_list.append(new_task)
+                    put_task_on_matrix(new_task)
+                except IndexError:
+                    print('Missing parameters.')
+            except ValueError:
+                print('Missing parameters.')
 
         # entry confirmation button
         entry_button = tk.Button(frame1, text="Put into Matrix..", command=new_task_function, bg="light slate grey")
