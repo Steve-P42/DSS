@@ -58,8 +58,8 @@ class Matrix:
         frame1 = tk.Frame(root, bg='blue4', bd=5)
         frame1.pack()
 
-        # frame that contains save button
-        frame2 = tk.Frame(root, bg='green', bd=5)
+        # frame that contains save button and exit button
+        frame2 = tk.Frame(root, bg='blue4', bd=5)
         frame2.pack(pady=10)
 
         # label to display what to input into the task_entry field
@@ -106,11 +106,20 @@ class Matrix:
 
         # button to save all tasks on the matrix into the tasks.csv file
         save_button = tk.Button(frame2, text="Save Tasks to file.", command=save_new_tasks_in_csv, bg="light slate grey")
-        save_button.pack()
+        save_button.pack(side=tk.LEFT, padx=5)
+
+        # button to exit the program
+        exit_button = tk.Button(frame2, text="Exit", command=root.destroy, bg="light slate grey")
+        exit_button.pack(side=tk.RIGHT, padx=5)
 
         # function to ..
         def delete_task_by_name():
-            t = task_entry.get().strip()
+            t_raw = task_entry.get().strip()
+            if ',' in t_raw:
+                t = t_raw.split(',')[0]
+            else:
+                t = t_raw
+
             try:
                 for i in range(len(self.task_list)):
                     if self.task_list[i][0] == t or self.task_list[i][0].lower() == t:
