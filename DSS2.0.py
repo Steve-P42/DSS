@@ -143,7 +143,30 @@ class Matrix:
             except IndexError:
                 pass
 
-        # button to save all tasks on the matrix into the tasks.csv file
+        # function to ..
+        def clear_board():
+            try:
+                task_number = len(self.task_list)
+                for i in range(len(self.task_list)):
+                    del(self.task_list[i])
+                    # delete canvas entries
+                    blue.delete("all")
+                    # Draw a blue rectangle in the middle
+                    blue.create_rectangle(1000, 500, 10, 10, fill="blue")
+                    # Draw a yellow line across
+                    blue.create_line(0, 250, 1000, 250, fill="red", dash=(4, 4))
+                    # Draw a red vertical line (dashed line)
+                    blue.create_line(500, 0, 500, 500, fill="red", dash=(4, 4))
+                print(f'{task_number} task(s) deleted.')
+            except IndexError:
+                pass
+
+        # button to clear the board
+        clear_board_button = tk.Button(frame1, text="Clear Board", command=clear_board, fg="orange red",
+                               bg="dim grey")
+        clear_board_button.pack(side=tk.RIGHT, padx=5, pady=5)
+
+        # button to delete task by putting in taskname or whole task data
         del_button = tk.Button(frame1, text="Delete Task", command=delete_task_by_name, fg="orange red",
                                bg="dim grey")
         del_button.pack(side=tk.RIGHT, padx=5, pady=5)
@@ -151,6 +174,7 @@ class Matrix:
         # run tk window in a loop
         root.mainloop()
 
+#todo clear board function introduced a strange bug where tasks appear from nowhere^^
 
 #l1 = [['Coding', 8, 7], ['Cleaning', 4, 6], ['OneOne', 1, 1]]
 
