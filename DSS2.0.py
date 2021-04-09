@@ -114,6 +114,7 @@ class Matrix:
 
         # function to ..
         def save_new_tasks_in_csv():
+            #todo empty file first?
             with open('tasks.csv', mode='w') as task_file2:
                 w = csv.writer(task_file2)
                 w.writerows(self.task_list)
