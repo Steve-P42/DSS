@@ -10,6 +10,8 @@
 # %%
 import tkinter as tk
 import csv
+from playsound import playsound
+from threading import Thread
 
 
 class Matrix:
@@ -80,13 +82,21 @@ class Matrix:
                     new_task = [task[0], int(task[1].strip()), int(task[2].strip())]
                     self.task_list.append(new_task)
                     put_task_on_matrix(new_task)
+
                 except IndexError:
                     print('Missing parameters.')
             except ValueError:
                 print('Missing parameters.')
 
+        def collector1():
+            t1 = Thread(new_task_function())
+            t2 = Thread(playsound('audio/creation_sound.mp3'))
+
+            t1.start()
+            t2.start()
+
         # entry confirmation button
-        entry_button = tk.Button(frame1, text="Put into Matrix..", command=new_task_function, bg="light slate grey")
+        entry_button = tk.Button(frame1, text="Put into Matrix..", command=collector1, bg="light slate grey")
         entry_button.pack(side=tk.LEFT, padx=5, pady=5)
 
         # function to draw tasks on matrix
