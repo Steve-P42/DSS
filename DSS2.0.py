@@ -31,7 +31,13 @@ class Matrix:
         self.task_list = tasklist
 
         # for de/activating audio
-        audio_flag = True
+        self.audio_flag = False
+
+        def set_sound():
+            if self.audio_flag == True:
+                self.audio_flag = False
+            else:
+                self.audio_flag = True
 
         # main window configuration
         root = tk.Tk()
@@ -94,7 +100,7 @@ class Matrix:
         def collector1():
             t1 = Thread(new_task_function())
 
-            if audio_flag:
+            if self.audio_flag:
                 t2 = Thread(playsound('audio/creation_sound.mp3'))
                 t2.start()
 
@@ -186,6 +192,19 @@ class Matrix:
         del_button = tk.Button(frame1, text="Delete Task", command=delete_task_by_name, fg="orange red",
                                bg="dim grey")
         del_button.pack(side=tk.RIGHT, padx=5, pady=5)
+
+
+        # Menu
+        # create a menu
+        my_menu = tk.Menu(root)
+        # show it
+        root.config(menu=my_menu)
+        # create submenu
+        settings_menu = tk.Menu(my_menu)
+        # add a dropdown for it
+        my_menu.add_cascade(label='Settings', menu=settings_menu)
+        # add and entry
+        settings_menu.add_command(label="Sound On/Off", command=set_sound)
 
         # run tk window in a loop
         root.mainloop()
