@@ -30,6 +30,9 @@ class Matrix:
                         pass
         self.task_list = tasklist
 
+        # for de/activating audio
+        audio_flag = True
+
         # main window configuration
         root = tk.Tk()
         root.title('Decision Matrix')
@@ -90,10 +93,12 @@ class Matrix:
 
         def collector1():
             t1 = Thread(new_task_function())
-            t2 = Thread(playsound('audio/creation_sound.mp3'))
+
+            if audio_flag:
+                t2 = Thread(playsound('audio/creation_sound.mp3'))
+                t2.start()
 
             t1.start()
-            t2.start()
 
         # entry confirmation button
         entry_button = tk.Button(frame1, text="Put into Matrix..", command=collector1, bg="light slate grey")
