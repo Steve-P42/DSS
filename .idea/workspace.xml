@@ -4,6 +4,7 @@
     <list default="true" id="424098ab-b91a-4f2a-9174-cc30e16121af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DSS2.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/DSS2.0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tasks.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +155,9 @@
       <workItem from="1617690677480" duration="1118000" />
       <workItem from="1617775891555" duration="971000" />
       <workItem from="1617961460393" duration="3941000" />
-      <workItem from="1618038745892" duration="2467000" />
+      <workItem from="1618038745892" duration="2864000" />
+      <workItem from="1618044136639" duration="59000" />
+      <workItem from="1618128651389" duration="1165000" />
     </task>
     <servers />
   </component>

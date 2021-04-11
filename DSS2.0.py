@@ -125,8 +125,11 @@ class Matrix:
 
         # function to ..
         def save_new_tasks_in_csv():
-            #todo empty file first?
             with open('tasks.csv', mode='w') as task_file2:
+                # delete content
+                task_file2.seek(0)
+                task_file2.truncate()
+                # write new content
                 w = csv.writer(task_file2)
                 w.writerows(self.task_list)
 
@@ -194,7 +197,7 @@ class Matrix:
         del_button.pack(side=tk.RIGHT, padx=5, pady=5)
 
 
-        # Menu
+        # Menu https://pythonbasics.org/tkinter-menu/
         # create a menu
         my_menu = tk.Menu(root)
         # show it
@@ -209,7 +212,10 @@ class Matrix:
         # run tk window in a loop
         root.mainloop()
 
-#todo clear board function introduced a strange bug where tasks appear from nowhere^^
+# todo clear board function introduced a strange bug where tasks appear from nowhere^^ - is this fixed?
+# todo colour picker for tasks?
+# todo task description field
+# todo DB support?
 
 #l1 = [['Coding', 8, 7], ['Cleaning', 4, 6], ['OneOne', 1, 1]]
 
