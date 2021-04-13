@@ -16,8 +16,9 @@ from threading import Thread
 
 class Matrix:
 
-    def __init__(self, tasklist=None):
+    def __init__(self):
         # if no arguments are given, the tasks are retrieved from the tasks.csv file
+        tasklist = None
         if tasklist is None:
             tasklist = []
             with open('tasks.csv') as task_file:
@@ -216,8 +217,6 @@ class Matrix:
 # todo colour picker for tasks?
 # todo task description field
 # todo DB support?
-
-#l1 = [['Coding', 8, 7], ['Cleaning', 4, 6], ['OneOne', 1, 1]]
 
 m1 = Matrix()
 
